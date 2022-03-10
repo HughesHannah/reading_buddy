@@ -1,0 +1,39 @@
+{% extends 'reading_buddy/base.html' %}
+{% load static %}
+
+{% block title_block %}
+    Home Page
+{% endblock %}
+
+{% block body_block %}
+<!--Navigation bar-->
+
+<div>
+    {% if user.is_authenticated %}
+       <!-- Hello + username -->
+    {% endif %}
+</div>
+<div>
+    <h1>Recently viewed books:</h1>
+</div>
+<div>
+    {% if pages %}
+        {% for page in pages %}
+            
+        {% endfor %}
+
+    {% else %}
+        <strong>No recently viewed books.</strong>
+    {% endif %}
+
+    <!--login/logout-->
+    {% if user.is_authenticated %}
+        <!-- restricted page -->
+        <!-- logout page -->
+    {% else %}
+        <!-- register page -->
+        <!-- login page -->
+    {% endif %}
+</div>
+
+{% endblock %}

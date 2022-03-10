@@ -1,0 +1,17 @@
+{% extends 'reading_buddy/base.html' %}
+{% load static %}
+
+{% block title_block %}
+    Register
+{% endblock %}
+
+{% block body_block %}
+    <h1>Register</h1>
+    {% if registered %}
+        <strong>Thank you for registering!</strong>
+        <!-- index page -->
+    {% else %}
+        <strong>register here!</strong><br />
+        <!-- register form -->
+    {% endif %}
+{% endblock %}

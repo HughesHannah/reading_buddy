@@ -1,0 +1,64 @@
+{% extends 'reading_buddy/base.html' %}
+{% load static %}
+
+{% block title_block %}
+    {% if category %}
+        {{ category.name }}
+    {% else %}
+        Unknown Category
+    {% endif %}
+{% endblock %}
+
+{% block body_block %}
+<!--Navigation bar-->
+
+{% if category %}
+    <!-- Show books and reviews-->
+{% else %}
+    <strong>No books currently in this genre.</strong>
+{% endif %}
+
+{% if user.is_authenticated %}
+    <!-- leave review-->
+{% else %}
+    <!-- leave comment?-->
+{% endif %}
+
+
+<!--Most Viewed Reviews-->
+<div>
+    <div>
+        <h2>Most Viewed Reviews</h2>
+        {% if most_views %}
+            <ul>
+            {% for review in most_views %}
+                <div>
+                    <!-- Show review, likes and views-->
+                </div>
+            {% endfor %}
+            </ul>
+        {% else %}
+            <strong>There are no reviews yet.</strong>
+        {% endif %}
+    </div>
+</div>
+
+<!--Most Liked Reviews-->
+<div>
+    <div>
+        <h2>Most Liked Reviews</h2>
+        {% if most_liked %}
+            <ul>
+            {% for review in most_liked %}
+                <div>
+                    <!-- Show review, likes and views-->
+                </div>
+            {% endfor %}
+            </ul>
+        {% else %}
+            <strong>There are no reviews yet.</strong>
+        {% endif %}
+    </div>
+</div>
+
+{% endblock %}
