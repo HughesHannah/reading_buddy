@@ -20,8 +20,13 @@
 
         <div>
             <div>
-                <p>Add your review:</p>
-                <!-- review form -->
+                {% if user.is_authenticated %}
+                    <p>Add your review:</p>
+                     <!-- review form -->
+                {% else %}
+                    <p>Sign in to leave a review</p>
+                    <!-- sign in -->
+                {% endif %}
             </div>
 
             {% if review %}

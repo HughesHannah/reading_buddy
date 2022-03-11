@@ -1,0 +1,38 @@
+{% extends 'reading_buddy/base.html' %}
+{% load static %}
+
+{% block title_block %}
+    Userpage
+{% endblock %}
+
+{% block body_block %}
+    <!--Navigation bar-->
+
+{% if user.is_authenticated %}
+    <div>
+            <h2>Hello {{ user.username }} !</h2>
+    </div>
+
+    <div>
+        <div class="list_left">
+            <!--user picture-->
+            <!--user info/bio-->
+
+            <h3>My Reviews:</h3>
+            <!-- user Reviews -->
+        </div>
+
+        <div class="list_right">
+            <h3>Wishlist:</h3>
+            <!-- user wishlist -->
+
+            <h3>Currently Reading:</h3>
+            <!-- user currently reading -->
+
+            <h3>Read:</h3>
+            <!-- user read -->
+        </div>
+    </div>
+{% endif %}
+
+{% endblock %}

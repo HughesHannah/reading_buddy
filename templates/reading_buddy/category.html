@@ -18,17 +18,17 @@
     <strong>No books currently in this genre.</strong>
 {% endif %}
 
+
 {% if user.is_authenticated %}
-    <!-- leave review-->
-{% else %}
-    <!-- leave comment?-->
+    <!-- add a book -->
+    <a href="{% url 'rango:add_page' category.slug %}">Add a book</a>
 {% endif %}
 
 
-<!--Most Viewed Reviews-->
+<!--Most Viewed Reviews (should this be in the 'if category' section?)-->
 <div>
     <div>
-        <h2>Most Viewed Reviews</h2>
+        <h2>Most Viewed Books</h2>
         {% if most_views %}
             <ul>
             {% for review in most_views %}
@@ -46,7 +46,7 @@
 <!--Most Liked Reviews-->
 <div>
     <div>
-        <h2>Most Liked Reviews</h2>
+        <h2>Most Liked Books</h2>
         {% if most_liked %}
             <ul>
             {% for review in most_liked %}
