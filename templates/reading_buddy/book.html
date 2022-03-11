@@ -1,0 +1,36 @@
+{% extends 'reading_buddy/base.html' %}
+{% load static %}
+
+{% block title_block %}
+    Book Reviews
+{% endblock %}
+
+{% block body_block %}
+    <!--Navigation bar-->
+
+    <div>
+        {% if book %}
+        <div>
+            <!--book name/title-->
+            <!--book author-->
+            <!-- book picture -->
+            <!-- book description/blurb -->
+        </div>
+        {% endif %}
+
+        <div>
+            <div>
+                <p>Add your review:</p>
+                <!-- review form -->
+            </div>
+
+            {% if review %}
+                {% for review in reviewList %}
+                    <div>{{ review.content }}</div>
+                {% endfor %}
+            {% else %}
+                <strong>No reviews yet.</strong>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

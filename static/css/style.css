@@ -1,0 +1,37 @@
+/* Homepage - basic settings */
+
+body{
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	font-family: 'Arial', 'Helvetica', sans-serif;
+}
+
+.homepage{
+  position: absolute;
+  right: 50px;
+  border-radius: 45px;
+  margin-top: 5px;
+  border: none;
+  padding: 8px 50px;
+}
+
+
+/* Right */
+.list_right{
+  float:right;
+  width:50%;
+  height: 100%;
+  position:relative;
+  right: 40px;
+}
+
+/* Left */
+.list_left{
+  float:left;
+  width:50%;
+  height: 100%;
+  position:relative;
+  top:60px;
+  left: 40px;
+}

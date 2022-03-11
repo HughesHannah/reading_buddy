@@ -25,15 +25,17 @@
         <div>
             <ul>
             {% if user.is_authenticated %}
-                <!-- restricted page -->
-                <!-- logout page -->
+                <a href="{% url 'readingBuddy:restricted' %}">Restricted Page</a><br>
+                <a href="{% url 'readingBuddy:logout' %}">Logout</a><br>
+
                 <!-- add book? -->
+
             {% else %}
-                <!-- register page -->
-                <!-- login page -->
+                <a href="{% url 'readingBuddy:register' %}">Sign Up</a><br>
+                <a href="{% url 'readingBuddy:login' %}">Login</a><br>
             {% endif %}
-                <!-- about page -->
-                <!-- index page -->
+                <li><a href="{% url 'readingBuddy:about' %}">About</a></li><br>
+                <li><a href="{% url 'readingBuddy:index' %}">Index</a></li><br>
             </ul>
         </div>
     </body>

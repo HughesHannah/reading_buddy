@@ -8,32 +8,56 @@
 {% block body_block %}
 <!--Navigation bar-->
 
-<div>
-    {% if user.is_authenticated %}
-       <!-- Hello + username -->
-    {% endif %}
-</div>
-<div>
-    <h1>Recently viewed books:</h1>
-</div>
-<div>
-    {% if pages %}
-        {% for page in pages %}
-            
-        {% endfor %}
 
-    {% else %}
-        <strong>No recently viewed books.</strong>
-    {% endif %}
+<!--main section-->
+<div class="homepage">
+    <div>
+        {% if user.is_authenticated %}
+            <h2>Hello {{ user.username }} </h2>
+        {% endif %}
+    </div>
+    <div class="list_left">
+        <!--books-->
+        {% if user.is_authenticated %}
+            <!--Recently viewed books-->
+            <h2>Recently viewed books:</h2>
+            {% if page in pages %}
+            <table>
+                <tbody>
+                    <tr><td>
+                    <ul>
+                        {% for page in pages %}
+                        <a href="{{ page.url }}">{{ page.title }}</a>
+                        <!--add more book info-->
 
-    <!--login/logout-->
-    {% if user.is_authenticated %}
-        <!-- restricted page -->
-        <!-- logout page -->
-    {% else %}
-        <!-- register page -->
-        <!-- login page -->
-    {% endif %}
+                        {% endfor %}
+                    </ul>
+                    </td></tr>
+                </tbody>
+            </table>
+
+        {% else %}
+            <strong>No recently viewed books available.</strong>
+        {% endif %}
+    </div>
+    <div class="list_right">
+        <!--most popular books-->
+        <h2>Most Popular Books</h2>
+        {% if most_liked %}
+            <ul>
+            {% for book in most_liked %}
+                <div>
+                    <a href="{% url 'readingBuddy:books' book.id %}">{{ book.title }}</a>
+                    <a >{{ book.likes }}</a>
+                    <a >{{ book.views }}</a>
+                    <hr align="left" width="30%"/>
+                </div>
+            {% endfor %}
+            </ul>
+        {% else %}
+            <strong>There are no books available.</strong>
+        {% endif %}
+    </div>
 </div>
 
 {% endblock %}
