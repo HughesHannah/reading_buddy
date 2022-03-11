@@ -22,12 +22,13 @@ class Category(models.Model):
 
 class Book(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    #readinglist = models.ForeignKey(ReadingList, on_delete=models.CASCADE)
     book_name = models.CharField(max_length=128, unique=True)
     author = models.CharField(max_length=128)
     intro = models.TextField()
-    views = models.IntegerField(default=0)
     likes = models.IntegerField(default=0)
-    score = models.FloatField() 
+    views = models.IntegerField(default=0)
+    score = models.DecimalField(default=0, max_digits=5, decimal_places=2)
 
     slug = models.SlugField(unique = True)
 
@@ -39,6 +40,7 @@ class Book(models.Model):
         return self.book_name
 
 class Comment(models.Model):
+    Book = models.ForeignKey(Book, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     content = models.TextField()
     date = models.DateField(auto_now=datetime.datetime.now())
@@ -54,8 +56,12 @@ class UserProfile(models.Model):
 
 class ReadingList(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    book_name = models.ForeignKey(Book, on_delete=models.CASCADE)
-
+    #book_name = models.ForeignKey(Book, on_delete=models.CASCADE)
+    book1= models.CharField(max_length=128, unique=True)
+    book2= models.CharField(max_length=128, unique=True)
+    book3= models.CharField(max_length=128, unique=True)
+    book4= models.CharField(max_length=128, unique=True)
+    book5= models.CharField(max_length=128, unique=True)
     def __str__(self):
         return self.user.username
 
