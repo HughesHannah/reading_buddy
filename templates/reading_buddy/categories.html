@@ -1,7 +1,11 @@
 <ul>
 {% if categories %}
     {% for c in categories %}
-        <!-- Show catrgory-->
+        {% if c == current_category %}
+        <li><strong><a href="{% url 'readingBuddy:show_category' c.slug %}">{{ c.name }}</a></strong></li>
+        {% else %}
+        <li><a href="{% url 'readingBuddy:show_category' c.slug %}">{{ c.name }}</a></li>
+        {% endif %}
     {% endfor %}
 {% else %}
     <strong>There are no generes present.</strong>

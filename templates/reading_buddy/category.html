@@ -10,7 +10,6 @@
 {% endblock %}
 
 {% block body_block %}
-<!--Navigation bar-->
 
 {% if category %}
     <!-- Show books and reviews-->
@@ -21,7 +20,7 @@
 
 {% if user.is_authenticated %}
     <!-- add a book -->
-    <a href="{% url 'rango:add_page' category.slug %}">Add a book</a>
+    <a href="{% url 'readingBuddy:add_page' category.slug %}">Add a book</a>
 {% endif %}
 
 
