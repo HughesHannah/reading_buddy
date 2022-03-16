@@ -1,4 +1,4 @@
-{% extends 'reading_buddy/base.html' %}
+{% extends 'rango/base.html' %}
 {% load static %}
 
 {% block title_block %}
@@ -57,7 +57,7 @@
             <ul>
             {% for book in most_liked %}
                 <div>
-                    <a href="{% url 'readingBuddy:books' book.id %}">{{ book.title }}</a>
+                    <a href="{% url 'rango:books' book.id %}">{{ book.title }}</a>
                     <a >{{ book.likes }}</a>
                     <a >{{ book.views }}</a>
                     <hr align="left" width="30%"/>
