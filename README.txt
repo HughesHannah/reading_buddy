@@ -6,9 +6,17 @@ And also if there are some changes of the model.py or database, migrate it.
 ~$ python populate_rango.py
 ~$ python manage.py createsuperuser
 
+
 superusername: 111
 pwd: apple1234
 
+****************************************************************************************
+
+regitser/login test
+username: user1
+email address: test@qq.com
+password: user1
+ 
 ****************************************************************************************
 populate data:
 Categories:  Arts    Computing   History    Literature

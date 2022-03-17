@@ -1,0 +1,27 @@
+{% extends 'readingBuddy/base.html' %}
+{% load static %}
+
+{% block title_block %}
+    Search result
+{% endblock %}
+
+
+{% block body_block %}
+
+{% if user.is_authenticated %}
+    Hello {{ user.username }}
+{% endif %}
+
+<div>
+    <h1>Search Result:</h1>
+    {% if books %}
+        {% for book in books %}
+            {{ book.book_name }}
+        {% endfor %}
+    {% else %}
+        <strong>Sorry, mo result.</strong>
+    {% endif %}
+</div>
+
+
+{% endblock %}

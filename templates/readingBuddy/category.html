@@ -1,29 +1,36 @@
-{% extends 'rango/base.html' %}
+{% extends 'readingBuddy/base.html' %}
 {% load static %}
+
+<!-- Yifan comment this part, show write comment part
 
 {% block title_block %}
     {% if category %}
-        {{ category.name }}
+        {{ category.cat_name }}
     {% else %}
         Unknown Category
     {% endif %}
 {% endblock %}
+-->
 
 {% block body_block %}
 
 {% if category %}
     <!-- Show books and reviews-->
+    {% if books %}
+    <ul> 
+        {% for book in books %}
+        <li>{{ book.book_name }}</a></li>
+        {% endfor %} 
+    </ul> 
+    {% else %} 
+        <strong>No books currently in category.</strong> 
+        {% endif %} 
+    {{ category.cat_name }} books
 {% else %}
-    <strong>No books currently in this genre.</strong>
+    <strong>The specified category does not exist.</strong>
 {% endif %}
 
-
-{% if user.is_authenticated %}
-    <!-- add a book -->
-    <a href="{% url 'rango:add_page' category.slug %}">Add a book</a>
-{% endif %}
-
-
+ 
 <!--Most Viewed Reviews (should this be in the 'if category' section?)-->
 <div>
     <div>

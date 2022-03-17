@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+
+	<head> <title>readingBuddy Test</title> </head>
+
+	<body> 
+		
+		<h1>readingBuddy tests...</h1>
+		<div> 
+			category_list: <br /> 
+			<strong>{{ category_list }}</strong><br /> 
+
+			book_list: <br /> 
+			<strong>{{ book_list }}</strong><br /> 
+
+			most_popular
+			most_popular: <br /> 
+			<strong>{{ most_popular }}</strong><br /> 
+		</div>
+
+		
+
+		<div>
+			<img src="{% static 'images/Ancestors.jpg' %}" alt="Picture of book" />
+			
+		</div> 
+	</body>
+
+</html>
+

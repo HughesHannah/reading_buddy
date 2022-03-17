@@ -1,9 +1,9 @@
 import os
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'reading_buddy.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'readingBuddy_groupproject.settings')
 
 import django
 django.setup()
-from rango.models import Category, Book, Comment, UserProfile, ReadingList
+from readingBuddy.models import Category, Book, Comment, UserProfile, ReadingList
 from django.contrib.auth.models import User
 
 def populate():
@@ -240,5 +240,5 @@ def addComment(question_id,content):
 
 
 if __name__ == '__main__':
-    print('Starting Rango population script...')
+    print('Starting readingBuddy population script...')
     populate()

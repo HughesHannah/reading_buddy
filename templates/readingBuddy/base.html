@@ -28,19 +28,19 @@
             <ul class="nav navbar-nav">
                 {% if categories %}
                     {% for category in categories %}
-                        <li><a href="{% url 'rango:show_category' category.slug %}">{{ category.name }}</a></li>
+                        <li><a href="{% url 'readingBuddy:show_category' category.slug %}">{{ category.cat_name }}</a></li>
                     {% endfor %}
                 {% else %}
                     <strong>There are no categories present.</strong>
                 {% endif %}
-                <form class="form-inline"  action="../rango/search_do/" role="form">
+                <form class="form-inline"  action="../readingBuddy/search_do/" role="form">
                     <input class="search_form" type="search" name="search" id="search" placeholder="Search here...">
                     <button class="submit_form" type="submit" class="submit_btn">Search</button>
                 </form>
                 {% if user.is_authenticated %}
-                <button class="homepage"> <a href="{% url 'rango:homepage' %}"> Home</a></button>
+                <button class="homepage"> <a href="{% url 'readingBuddy:userpage' %}"> Home</a></button>
                 {% else %}
-                <button class="homepage"> <a href="{% url 'rango:login' %}">Sign in</a></button>
+                <button class="homepage"> <a href="{% url 'readingBuddy:login' %}">Sign in</a></button>
                 {% endif %}
             </ul>
         </div>
@@ -61,17 +61,17 @@
         <div>
             <ul>
             {% if user.is_authenticated %}
-                <a href="{% url 'rango:restricted' %}">Restricted Page</a><br>
-                <a href="{% url 'rango:logout' %}">Logout</a><br>
+                <a href="{% url 'readingBuddy:restricted' %}">Restricted Page</a><br>
+                <a href="{% url 'readingBuddy:logout' %}">Logout</a><br>
 
                 <!-- add book? -->
 
             {% else %}
-                <a href="{% url 'rango:register' %}">Sign Up</a><br>
-                <a href="{% url 'rango:login' %}">Login</a><br>
+                <a href="{% url 'readingBuddy:register' %}">Sign Up</a><br>
+                <a href="{% url 'readingBuddy:login' %}">Login</a><br>
             {% endif %}
-                <li><a href="{% url 'rango:about' %}">About</a></li><br>
-                <li><a href="{% url 'rango:index' %}">Index</a></li><br>
+                <li><a href="{% url 'readingBuddy:about' %}">About</a></li><br>
+                <li><a href="{% url 'readingBuddy:index' %}">Index</a></li><br>
             </ul>
         </div>
     </body>

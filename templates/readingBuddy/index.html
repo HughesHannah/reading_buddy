@@ -1,4 +1,4 @@
-{% extends 'rango/base.html' %}
+{% extends 'readingBuddy/base.html' %}
 {% load static %}
 
 {% block title_block %}
@@ -7,7 +7,6 @@
 
 {% block body_block %}
 
-
 <!--main section-->
 <div class="homepage">
     <div class="list_left">
@@ -15,7 +14,7 @@
         {% if user.is_authenticated %}
             <!--Recently viewed books-->
             <h2>Recently viewed books:</h2>
-            {% if page in pages %}
+            {% if book in books %}
             <table>
                 <tbody>
                     <tr><td>
@@ -29,6 +28,7 @@
                     </td></tr>
                 </tbody>
             </table>
+            {% endif %}
 
         {% else %}
             <h2>Most viewed books:</h2>
@@ -57,7 +57,7 @@
             <ul>
             {% for book in most_liked %}
                 <div>
-                    <a href="{% url 'rango:books' book.id %}">{{ book.title }}</a>
+                    <a href="{% url 'readingBuddy:books' book.id %}">{{ book.title }}</a>
                     <a >{{ book.likes }}</a>
                     <a >{{ book.views }}</a>
                     <hr align="left" width="30%"/>
