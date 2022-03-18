@@ -18,19 +18,37 @@
             <!--user picture-->
             <!--user info/bio-->
 
-            <h3>My Reviews:</h3>
-            <!-- user Reviews -->
+            <h3>My Comment:</h3>
+            <!-- user Comment -->
+            {% if comments %}
+            <ul>
+                {% for comment in comments %}
+                    <li>{{ comment.content }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
         </div>
 
         <div class="list_right">
+        {% if readlist_list %}
             <h3>Wishlist:</h3>
             <!-- user wishlist -->
-
+            {% for wishlist in readlist_list %}
+                <li>{{ wishlist.book1 }}</li>
+                <li>{{ wishlist.book2 }}</li>
+            {% endfor %}
             <h3>Currently Reading:</h3>
             <!-- user currently reading -->
-
-            <h3>Read:</h3>
-            <!-- user read list -->
+            {% for reading in readlist_list %}
+                <li>{{ reading.book3 }}</li>
+            {% endfor %}
+            <h3>Finish Reading:</h3>
+            <!-- user finish reading list -->
+            {% for finish in readlist_list %}
+                <li>{{ finish.book4 }}</li>
+                <li>{{ finish.book5 }}</li>
+            {% endfor %}
+        {% endif %}
         </div>
     </div>
     

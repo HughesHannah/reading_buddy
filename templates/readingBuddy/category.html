@@ -15,56 +15,21 @@
 {% block body_block %}
 
 {% if category %}
-    <!-- Show books and reviews-->
+    <!-- Show books: in descending order on ‘likes' -->
+    <!-- Can add more info about books on the page -->
     {% if books %}
     <ul> 
         {% for book in books %}
-        <li>{{ book.book_name }}</a></li>
+        <li><a href="{% url 'readingBuddy:show_book' book.slug %}">{{ book.book_name }}</a></li>
         {% endfor %} 
-    </ul> 
+    </ul>
     {% else %} 
         <strong>No books currently in category.</strong> 
-        {% endif %} 
-    {{ category.cat_name }} books
+    {% endif %} 
+
 {% else %}
     <strong>The specified category does not exist.</strong>
 {% endif %}
 
- 
-<!--Most Viewed Reviews (should this be in the 'if category' section?)-->
-<div>
-    <div>
-        <h2>Most Viewed Books</h2>
-        {% if most_views %}
-            <ul>
-            {% for review in most_views %}
-                <div>
-                    <!-- Show review, likes and views-->
-                </div>
-            {% endfor %}
-            </ul>
-        {% else %}
-            <strong>There are no reviews yet.</strong>
-        {% endif %}
-    </div>
-</div>
-
-<!--Most Liked Reviews-->
-<div>
-    <div>
-        <h2>Most Liked Books</h2>
-        {% if most_liked %}
-            <ul>
-            {% for review in most_liked %}
-                <div>
-                    <!-- Show review, likes and views-->
-                </div>
-            {% endfor %}
-            </ul>
-        {% else %}
-            <strong>There are no reviews yet.</strong>
-        {% endif %}
-    </div>
-</div>
 
 {% endblock %}

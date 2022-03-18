@@ -11,55 +11,27 @@
 <div class="homepage">
     <div class="list_left">
         <!--books-->
-        {% if user.is_authenticated %}
-            <!--Recently viewed books-->
-            <h2>Recently viewed books:</h2>
-            {% if book in books %}
-            <table>
-                <tbody>
-                    <tr><td>
-                    <ul>
-                        {% for book in books %}
-                        <a href="{{ book.url }}">{{ page.title }}</a>
-                        <!--add more book info-->
+        <h2>Book List:</h2>
+        <ul>
+        {% for book in books %}
+        <div>
+            <a href="{% url 'readingBuddy:show_book' book.slug %}">{{ book.book_name }}</a>
+            <!--can add more info-->
+        </div>
+        {% endfor %}
+        </ul>
 
-                        {% endfor %}
-                    </ul>
-                    </td></tr>
-                </tbody>
-            </table>
-            {% endif %}
-
-        {% else %}
-            <h2>Most viewed books:</h2>
-            {% if page in most_view %}
-            <table>
-                <tbody>
-                    <tr><td>
-                    <ul>
-                        {% for book in books %}
-                        <a href="{{ book.url }}">{{ page.title }}</a>
-                        <!--add more book info-->
-
-                        {% endfor %}
-                    </ul>
-                    </td></tr>
-                </tbody>
-            {% else %}
-                <strong>There are no books available.</strong>
-            {% endif %}
-        {% endif %}
-    </div>
     <div class="list_right">
         <!--most popular books-->
         <h2>Most Popular Books</h2>
-        {% if most_liked %}
+        {% if most_popular %}
             <ul>
-            {% for book in most_liked %}
+            {% for book in most_popular %}
                 <div>
-                    <a href="{% url 'readingBuddy:books' book.id %}">{{ book.title }}</a>
-                    <a >{{ book.likes }}</a>
-                    <a >{{ book.views }}</a>
+                    <a href="{% url 'readingBuddy:show_book' book.slug %}">{{ book.book_name }}</a>
+                    {{ book.score }}
+                    {{ book.likes }}
+                    {{ book.views }}
                     <hr align="left" width="30%"/>
                 </div>
             {% endfor %}

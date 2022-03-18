@@ -6,13 +6,22 @@
 {% endblock %}
 
 {% block body_block %}
-    <h1>Register</h1>
+    <h1>Register for readingBuddy</h1> 
     {% if registered %}
-        <strong>Thank you for registering!</strong>
-        <!-- index page -->
-        <!-- comment by Yifan: jump into the homepage maybe better? -->>
+        readingBuddy says: <strong>thank you for registering!</strong>
+        <a href="{% url 'readingBuddy:index' %}">Return to the homepage(indexpage).</a><br />
     {% else %}
-        <strong>register here!</strong><br />
-        <!-- register form -->
-    {% endif %}
+        readingBuddy says: <strong>register here!</strong><br />
+        <form id="user_form" method="post" action="{% url 'readingBuddy:register' %}" enctype="multipart/form-data">
+            {% csrf_token %}
+            <!-- Display each form-->
+            {{ user_form.as_p }} 
+            {{ profile_form.as_p }}
+
+            <!-- Provide a button to click to submit the form. -->
+            <input type="submit" name="submit" value="Register" />
+        </form>
+    {% endif %} 
+    
+
 {% endblock %}

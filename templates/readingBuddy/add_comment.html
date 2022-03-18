@@ -1,0 +1,28 @@
+{% extends 'readingBuddy/base.html' %}
+{% load static %}
+
+{% block title_block %}
+    Add a Comment
+{% endblock %}
+
+{% block body_block %}
+
+<div>
+    <h1>Add a Comment</h1>
+    <div>
+        <!-- Add Comment form-->
+        <form id="add_comment_form" method="post" action="{% url 'readingBuddy:add_comment' book.slug %}">
+            {% csrf_token %}
+            {% for hidden in form.hidden_fields %}
+                {{ hidden }}
+            {% endfor %}
+            {% for field in form.visible_fields %}
+                {{ field.errors }}
+                {{ field.help_text }}
+                {{ field }}
+            {% endfor %}
+            <input type="submit" name="submit" value="Click me to add comment" />
+        </form>
+    </div>
+</div>
+{% endblock %}

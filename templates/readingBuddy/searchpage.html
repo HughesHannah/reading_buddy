@@ -16,10 +16,10 @@
     <h1>Search Result:</h1>
     {% if books %}
         {% for book in books %}
-            {{ book.book_name }}
+            <li><a href="{% url 'readingBuddy:show_book' book.slug %}">{{ book.book_name }}</a></li>
         {% endfor %}
     {% else %}
-        <strong>Sorry, mo result.</strong>
+        <strong>Sorry, no result.</strong>
     {% endif %}
 </div>
 
