@@ -6,8 +6,8 @@
     <head>
         <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
-        <script type="text/javascript" src="{% static 'js/1.js' %}"></script>
-        <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+        <script type="text/javascript" src="{% static 'js/review.js' %}"></script>
+        <script src="https://cdn.staticfile.org/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -63,6 +63,7 @@
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">User <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="{% url 'readingBuddy:userpage' %}">User Page</a></li>
+            <li><a href="#">Add a Book</a></li>
             <li><a href="{% url 'readingBuddy:logout' %}">Logout</a></li>
           </ul>
         </li>

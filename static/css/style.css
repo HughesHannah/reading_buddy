@@ -109,8 +109,12 @@ footer{
 
 .bookInfoBlock{
   width:60%;
-  top:60px;
-  left: 40px;
+  padding: 5%;
+}
+
+.showHide{
+  font-size: 15px;
+  color: black;
 }
 
 .bookInfo{

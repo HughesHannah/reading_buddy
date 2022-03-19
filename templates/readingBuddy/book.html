@@ -28,11 +28,11 @@
 </div>
 
 <div class="row">
-    <div class=" img-responsive col-md-6">
+    <div class=" img-responsive col-md-6 bookPicture">
         <img src="{{ MEDIA_URL}}{{ book.slug }}.jpg" alt="Picture of book."/>
     </div>
         
-    <div class="col-md-6">
+    <div class="col-md-6 bookInfoBlock">
         <!--book score-->
         <div class="bookInfo"> Score: {{ book.score }} </div>
         <!--book author-->
@@ -45,7 +45,7 @@
         <div class="bookInfo"> Views: {{ book.views }} </div><br>
 
         <div class="button">
-        <div class="button d1"><a href="#">Click here to show reviews ...</a></div>
+        <div class="button d1 showHide"><a href="#">Click here to show reviews ...</a></div>
 
         <!-- book comment -->
         <div id="reviewBlock">
@@ -76,8 +76,7 @@
                 <input type="submit" name="submit" value="Click me to add a review" />
             </form>
         {% else %}
-            <p>Sign in to add a review</p>
-            <!-- jump to sign in page-->
+            <a href="{% url 'readingBuddy:login' %}">Sign in to add a review</a>
         {% endif %}
     </div>
 
