@@ -1,32 +1,40 @@
 {% extends 'readingBuddy/base.html' %}
 {% load static %}
 
-<!-- Yifan comment this part, show write comment part
-
-{% block title_block %}
-    {% if category %}
-        {{ category.cat_name }}
-    {% else %}
-        Unknown Category
-    {% endif %}
-{% endblock %}
--->
-
 {% block body_block %}
-<div>
-<br>
-<br>
-<br>
-<br>
 {% if category %}
+<div>
+    <h1 class="catTitle">
+        Genre: {{ category.cat_name }}
+    </h1>
+</div>
+
+
     <!-- Show books: in descending order on ‘likes' -->
     <!-- Can add more info about books on the page -->
     {% if books %}
     <ul> 
         {% for book in books %}
-        <div class = "booksInBooklist">
-        <li><a href="{% url 'readingBuddy:show_book' book.slug %}">{{ book.book_name }}</a></li>
-        </div>
+        <div class="booksInPopular panel panel-default">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <h5>
+                                    <a class="catBookTitle" href="{% url 'readingBuddy:show_book' book.slug %}">{{ book.book_name }}</a>
+                                </h5>
+                                <div class="col-md-4 catBookInfo">
+                                    <div>Book Score: {{ book.score }}</div>
+                                    <div>Likes: {{ book.likes }}</div>
+                                    <div>Views: {{ book.views }}</div>
+                                </div>
+                                <div class="col-md-8 catBookInfo">
+                                    <div>Introduction: {{ book.intro }}</div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <img src="{{ MEDIA_URL}}{{ book.slug }}.jpg" alt="Picture of book." class="img-responsive genreBookPicture">
+                            </div>
+                        </div>
+                    </div>
         {% endfor %} 
     </ul>
     {% else %} 

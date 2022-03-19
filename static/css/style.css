@@ -73,6 +73,27 @@ footer{
   color: black;
 }
 
+/* Genre Page */
+.genreBookPicture{
+  width:30%;
+  margin: 5%;
+}
+
+.catTitle{
+  margin-left: 40px;
+}
+
+.catBookInfo{
+  padding: 5%;
+}
+
+.catBookTitle{
+  font-size: 20px;
+  text-align: left;
+  color: black;
+  padding: 5%;
+}
+
 /* Book Page */
 .bookHeading{
   padding-top: 30px;
