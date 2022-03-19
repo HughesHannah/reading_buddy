@@ -7,6 +7,7 @@
 {% endblock %}
 
 {% block body_block %}
+
 <div>
     <div class="row">
         <div class="col-md-6">
@@ -33,7 +34,7 @@
             {% if most_popular %}
             <div>
                 {% for book in most_popular %}
-                    <div class="booksInPopular panel panel-default">
+                    <div class="booksInPopular panel panel-default" id="card">
                         <h5 class="text-center">
                             <a class="linkToBookTitle" href="{% url 'readingBuddy:show_book' book.slug %}">{{ book.book_name }}</a>
                         </h5>
@@ -43,7 +44,7 @@
                             </div>
 
                             <div class="col-md-6 bookRight">
-                                <div>Book Score: {{ book.score }}</div>
+                                <div id="text1">Book Score: {{ book.score }}</div>
                                 <div>Likes: {{ book.likes }}</div>
                                 <div>Views: {{ book.views }}</div>
                             </div>
@@ -57,6 +58,10 @@
         </div>
     </div>
 </div>
+
+
+
+
 
 
 

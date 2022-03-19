@@ -7,6 +7,20 @@
 
 
 {% block body_block %}
+
+<script type="text/javascript">
+    $(document).ready(function() {
+
+        $("#reviewBlock").hide();
+
+      $(".d1").click(function() {
+        $("#reviewBlock").toggle();
+      });
+    });
+</script>
+
+
+
 {% if book %}
 <div>
     <!--book name/title-->
@@ -28,9 +42,13 @@
 
         <!-- book likes & views -->
         <div class="bookInfo"> Likes: {{ book.likes }} </div>
-        <div class="bookInfo"> Views: {{ book.views }} </div>
+        <div class="bookInfo"> Views: {{ book.views }} </div><br>
+
+        <div class="button">
+        <div class="button d1"><a href="#">Click here to show reviews ...</a></div>
 
         <!-- book comment -->
+        <div id="reviewBlock">
         {% if comments %}
             <p> Reviews: </p>
             <ul>
@@ -58,10 +76,10 @@
                 <input type="submit" name="submit" value="Click me to add a review" />
             </form>
         {% else %}
-            <p>Sign in to add a review</p>-->
+            <p>Sign in to add a review</p>
             <!-- jump to sign in page-->
         {% endif %}
-
+    </div>
 
     </div>
 </div>
