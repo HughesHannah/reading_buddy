@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 {% extends 'readingBuddy/base.html' %}
 {% load static %}
 
@@ -6,40 +7,57 @@
 {% endblock %}
 
 {% block body_block %}
+<div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="mainTitle">
+                <h2>Book List:</h2>
+            </div>
 
-<!--main section-->
-<div class="homepage">
-    <div class="list_left">
-        <!--books-->
-        <h2>Book List:</h2>
-        <ul>
-        {% for book in books %}
-        <div>
-            <a href="{% url 'readingBuddy:show_book' book.slug %}">{{ book.book_name }}</a>
-            <!--can add more info-->
-        </div>
-        {% endfor %}
-        </ul>
-
-    <div class="list_right">
-        <!--most popular books-->
-        <h2>Most Popular Books</h2>
-        {% if most_popular %}
-            <ul>
-            {% for book in most_popular %}
+            <div class="booksInBooklist">
                 <div>
+                    {% for book in books %}
+                    <div>
                     <a href="{% url 'readingBuddy:show_book' book.slug %}">{{ book.book_name }}</a>
-                    {{ book.score }}
-                    {{ book.likes }}
-                    {{ book.views }}
-                    <hr align="left" width="30%"/>
+                    </div>
+                    {% endfor %}
                 </div>
-            {% endfor %}
-            </ul>
-        {% else %}
+            </div>
+        </div>
+    <div class="col-md-6">
+        <div class="mainTitle">
+            <h2>Most Popular Books:</h2>
+        </div>
+
+        <div>
+            {% if most_popular %}
+            <div>
+                {% for book in most_popular %}
+                    <div class="booksInPopular panel panel-default">
+                        <h5 class="text-center">
+                            <a class="linkToBookTitle" href="{% url 'readingBuddy:show_book' book.slug %}">{{ book.book_name }}</a>
+                        </h5>
+                        <div class="row">
+                            <div class="col-md-6">
+                            <img src="{{ MEDIA_URL}}{{ book.slug }}.jpg" alt="Picture of book." class="img-responsive bookImage">
+                            </div>
+
+                            <div class="col-md-6 bookRight">
+                                <div>Book Score: {{ book.score }}</div>
+                                <div>Likes: {{ book.likes }}</div>
+                                <div>Views: {{ book.views }}</div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            {% else %}
             <strong>There are no books available.</strong>
-        {% endif %}
+            {% endif %}
+        </div>
     </div>
 </div>
+
+
 
 {% endblock %}

@@ -1,43 +1,99 @@
-/* Homepage - basic settings */
+
 
 body{
-	position: fixed;
-	width: 100%;
-	height: 100%;
 	font-family: 'Arial', 'Helvetica', sans-serif;
 }
 
-.background {display: table;width: 100%;height: 100%;padding: 30px 0;text-align: center;background-color: #b0896f;background-size: cover;}
+footer{
+  margin-top: 50px;
+}
 
-.navbar {padding:6px 0; font-size:15px;}
-.navbar a{background:transparent;color:#b0896f }
-.navbar a:hover {color:#6fb096 !important;background:transparent;outline:0}
+
+.jumbotron{
+  padding-left: 50px;
+}
+
+.navbar-brand img{
+  width: 30px;
+}
 
 .homepage{
-  position: absolute;
-  right: 50px;
   border-radius: 45px;
   margin-top: 5px;
   border: none;
   padding: 8px 50px;
 }
 
-
-/* Right */
-.list_right{
-  float:right;
-  width:50%;
-  height: 100%;
-  position:relative;
-  right: 40px;
+.mainSection{
+  text-align: right;
+  background-color: #DFCFBE;
+  opacity:0.7;
 }
 
-/* Left */
-.list_left{
-  float:left;
-  width:50%;
-  height: 100%;
-  position:relative;
+.mainTitle{
+  width: 500px;
+  text-align: left;
+  font-size: 25px;
+  border-radius: 45px;
+}
+
+.bookImage{
+  margin: 5%;
+  max-height: 100px;
+}
+
+.bookRight{
+  padding-top: 5%;
+}
+
+.booksInBooklist{
+  text-align: left;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 50px;
+  border-radius: 10px;
+  background-color: #d3d3d3;
+  border: 1px solid #A9A9A9;
+}
+
+.booksInPopular{
+  text-align: left;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-radius: 10px;
+  background-color: #d3d3d3;
+  border: 1px solid #A9A9A9
+}
+
+.linkToBookTitle{
+  font-size: 20px;
+  color: black;
+}
+
+/* Book Page */
+.bookHeading{
+  padding-top: 30px;
+  font-size: 60px;
+  text-align: left;
+}
+
+.bookPicture{
+  width:30%;
+  margin: 5%;
+}
+
+.bookInfoBlock{
+  width:60%;
   top:60px;
   left: 40px;
 }
+
+.bookInfo{
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.comments{
+  padding-right: 50px;
+}
+

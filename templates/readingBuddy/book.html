@@ -7,44 +7,46 @@
 
 
 {% block body_block %}
+{% if book %}
+<div>
+    <!--book name/title-->
+    <div class="bookHeading"> {{ book.book_name }} </div> 
+</div>
 
-    <div>
-        {% if book %}
-        <div>
-            <!--book name/title-->
-            <p> book name: {{ book.book_name }} </p>
-            <!--book score-->
-            <p> book score: {{ book.score }} </p>
-            <!--book author-->
-            <p> book author: {{ book.author }} </p>
-            <!--book introduction-->
-            <p> book introduction: {{ book.intro }} </p>
-            <!-- book picture -->
-            <img src="{{ MEDIA_URL}}{{ book.slug }}.jpg" alt="Picture of book."/>
-            <!-- book likes & views -->
-            <p> book likes: {{ book.likes }} </p>
-            <p> book views: {{ book.views }} </p>
-            <!-- book comment -->
-            {% if comments %}
-                <p> Current Comment </p>
-                <ul>
-                {% for comment in comments %}
-                    <li> {{ comment.content }} </li>
-                {% endfor %}
-                </ul>
-            {% else %} 
-                <strong>No comments of this book currently.</strong> 
-            {% endif %}
-        {% else %}
-            <strong>The specified book does not exist.</strong>
-        </div>
+<div class="row">
+    <div class=" img-responsive col-md-6">
+        <img src="{{ MEDIA_URL}}{{ book.slug }}.jpg" alt="Picture of book."/>
+    </div>
+        
+    <div class="col-md-6">
+        <!--book score-->
+        <div class="bookInfo"> Score: {{ book.score }} </div>
+        <!--book author-->
+        <div class="bookInfo"> Author: {{ book.author }} </div>
+        <!--book introduction-->
+        <div class="bookInfo"> Introduction: {{ book.intro }} </div>
+
+        <!-- book likes & views -->
+        <div class="bookInfo"> Likes: {{ book.likes }} </div>
+        <div class="bookInfo"> Views: {{ book.views }} </div>
+
+        <!-- book comment -->
+        {% if comments %}
+            <p> Reviews: </p>
+            <ul>
+            {% for comment in comments %}
+                <li> {{ comment.content }} </li>
+            {% endfor %}
+            </ul>
+        {% else %} 
+            <strong>No comments of this book currently.</strong> 
         {% endif %}
 
-        <div>
-            <!--{% if user.is_authenticated %}-->
-                <p>Add your comment to {{ book.book_name }}</p>
-                <!-- comment form-->
-                <form id="add_comment_form" method="post" action="{% url 'readingBuddy:add_comment' book.slug %}">
+
+        {% if user.is_authenticated %}
+            <p>Add your comment to {{ book.book_name }}</p>
+            <!-- comment form-->
+            <form id="add_comment_form" method="post" action="{% url 'readingBuddy:add_comment' book.slug %}">
                     {% csrf_token %}
                     {% for hidden in form.hidden_fields %}
                         {{ hidden }}
@@ -54,15 +56,21 @@
                         {{ field.help_text }}
                         {{ field }}
                     {% endfor %}
-                    <input type="submit" name="submit" value="Click me to add comment" />
-                </form>
-            <!--{% else %}
-                <p>Sign in to add a comment</p>-->
-                <!-- jump to sign in page-->
-            {% endif %}
-        </div>
-    </div>
+                <input type="submit" name="submit" value="Click me to add comment" />
+            </form>
+        {% else %}
+            <p>Sign in to add a comment</p>-->
+            <!-- jump to sign in page-->
+        {% endif %}
 
-    
+
+    </div>
+</div>
+
+
+{% else %}
+    <strong>The specified book does not exist.</strong>
+{% endif %}
+
 
 {% endblock %}

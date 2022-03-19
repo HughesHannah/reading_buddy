@@ -13,14 +13,20 @@
 -->
 
 {% block body_block %}
-
+<div>
+<br>
+<br>
+<br>
+<br>
 {% if category %}
     <!-- Show books: in descending order on ‘likes' -->
     <!-- Can add more info about books on the page -->
     {% if books %}
     <ul> 
         {% for book in books %}
+        <div class = "booksInBooklist">
         <li><a href="{% url 'readingBuddy:show_book' book.slug %}">{{ book.book_name }}</a></li>
+        </div>
         {% endfor %} 
     </ul>
     {% else %} 
@@ -30,6 +36,6 @@
 {% else %}
     <strong>The specified category does not exist.</strong>
 {% endif %}
-
+</div>
 
 {% endblock %}
