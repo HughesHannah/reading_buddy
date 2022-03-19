@@ -38,7 +38,6 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li class="active"><a href="{% url 'readingBuddy:index' %}">Reading Buddy <span class="sr-only">(current)</span></a></li>
-        <li><a href="#">Link</a></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Genres <span class="caret"></span></a>
           <ul class="dropdown-menu">
@@ -63,7 +62,7 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">User <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="{% url 'readingBuddy:restricted' %}">User Page</a></li>
+            <li><a href="{% url 'readingBuddy:userpage' %}">User Page</a></li>
             <li><a href="{% url 'readingBuddy:logout' %}">Logout</a></li>
           </ul>
         </li>

@@ -44,7 +44,6 @@
 
 
         {% if user.is_authenticated %}
-            <p>Add your comment to {{ book.book_name }}</p>
             <!-- comment form-->
             <form id="add_comment_form" method="post" action="{% url 'readingBuddy:add_comment' book.slug %}">
                     {% csrf_token %}
@@ -56,10 +55,10 @@
                         {{ field.help_text }}
                         {{ field }}
                     {% endfor %}
-                <input type="submit" name="submit" value="Click me to add comment" />
+                <input type="submit" name="submit" value="Click me to add a review" />
             </form>
         {% else %}
-            <p>Sign in to add a comment</p>-->
+            <p>Sign in to add a review</p>-->
             <!-- jump to sign in page-->
         {% endif %}
 

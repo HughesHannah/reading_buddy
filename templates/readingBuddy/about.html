@@ -1,18 +1,31 @@
-<!--need to use to base.html-->
-<!DOCTYPE html>
-{% load staticfiles %}
-<html>
+{% extends 'readingBuddy/base.html' %}
+{% load static %}
 
-	<head> <title>About readingBuddy</title> </head>
+{% block title_block %}
+    About Page
+{% endblock %}
+
+{% block body_block %}
 
 	<body> 
-		<h1>readingBuddy about...</h1>
+		<div class="aboutInfo">
+			<h1>About Reading Buddy</h1><br>
 		<div> 
-			visits: <br /> 
+			Site visits: <br /> 
 			<strong>{{ visits }}</strong><br /> 
 		</div>
-
+		<br>
+		<div>
+			<!-- Content about Reading Buddy -->
+			Reading Buddy is a collaborative website where users can record and review books that they have read.
+			Users can read comments from other users on books and add them to their
+			‘Wishlist’. Once they have read the book, they can then add it to their ‘Read’ list
+			and write a review for future readers.
+			A top trending books section shows which books are currently most popular.
+		</div>
+			<img class="mb-4" src="{% static 'images/logo1.JPG' %}" alt="Reading Buddy Logo" height="500">
+		</div>
 	</body>
 
-</html>
+{% endblock %}
 
