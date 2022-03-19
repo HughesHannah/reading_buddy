@@ -1,3 +1,11 @@
+~$python manage.py test readingBuddy
+~$ python manage.py makemigrations readingBuddy
+~$ python manage.py migrate
+~$ python populate_rango.py
+~$ python manage.py createsuperuser
+~$ python manage.py runserver
+
+****************************************************************************************
 if delete the db and migration file, should create a new superuser:
 ~$ python manage.py createsuperuser
 And also if there are some changes of the model.py or database, migrate it.
