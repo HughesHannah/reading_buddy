@@ -253,7 +253,6 @@ def add_comment(request, book_name_slug):
 ############################ search_do  ############################
 ## [test result] 
 #   - can show the search result
-@login_required
 def search_do(request):
     search_item = request.GET.get('search')
     current_user = request.user

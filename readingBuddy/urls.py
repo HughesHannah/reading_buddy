@@ -1,4 +1,4 @@
-from django.urls import path 
+from django.urls import URLPattern, path 
 from readingBuddy import views
 
 app_name = 'readingBuddy'
