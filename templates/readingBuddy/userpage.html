@@ -5,13 +5,16 @@
     <!--Navigation bar-->
     {% if user.is_authenticated %}
         <div class="row userpageContent">
-            <div>
-                <h2>Hello {{ user.username }} !</h2>
+            <div class= "col-md-4">
+                <h2>Hello {{ user.username }} !</h2><br>
+                <!--user picture-->
+                {% if request.user.userprofile.picture %}
+                <img src="{{ request.user.userprofile.picture.url }}" alt="" width="80%" align="center">
+    {% endif %}
             </div>
-            <div>
+            <div class="col-md-8">
                 <div>
-                    <!--user picture-->
-                    <!--user info/bio-->
+                    
                     <h3>My Reviews:</h3>
                     <!-- user Comment -->
                     {% if comments %}
