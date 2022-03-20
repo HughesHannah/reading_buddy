@@ -13,7 +13,7 @@
     {% endif %}
             </div>
             <div class="col-md-8">
-                <div>
+                <div class="userpageInfo">
                     
                     <h3>My Reviews:</h3>
                     <!-- user Comment -->
@@ -21,6 +21,8 @@
                         <ul>
                             {% for comment in comments %}<li>{{ comment.content }} -- “{{ comment.Book }}”</li>{% endfor %}
                         </ul>
+                    {% else %}
+                        You haven't made any reviews yet.
                     {% endif %}
                 </div>
                 {% if readlist_list %}
