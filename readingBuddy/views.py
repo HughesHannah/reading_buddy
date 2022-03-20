@@ -177,7 +177,11 @@ def user_login(request):
 ############################ restricted ############################
 @login_required
 def restricted(request):
-    return render(request, 'readingBuddy/restricted.html')
+    context_dict = {}
+    categories = Category.objects.all()
+    context_dict['categories'] = categories
+
+    return render(request, 'readingBuddy/restricted.html', context=context_dict)
 
 ############################ user_logout ############################
 @login_required
