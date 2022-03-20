@@ -43,21 +43,20 @@
             <br>
             <div>
                 Add book to one of your lists:
-                <img href="#"
-                     src="{% static 'images/wishlist.JPG' %}"
-                     alt="Add to wishlist"
-                     width="50px">
-            </a>
-            <img href="#"
-                 src="{% static 'images/current.JPG' %}"
-                 alt="Add to Currently Reading"
-                 width="50px">
-        </a>
-        <img href="#"
-             src="{% static 'images/tick.JPG' %}"
-             alt="Add to Read books"
-             width="50px">
-    </a>
+                <a href="{% url 'readingBuddy:add_wishlist' book.slug %}" >
+                    <img width="50px" src = "{% static 'images/wishlist.JPG' %}" 
+                     alt="Add to wishlist">
+                </a>
+               
+                <a href="{% url 'readingBuddy:show_book' book.slug %}">
+                    <img width="50px" src = "{% static 'images/current.JPG' %}"
+                     alt="Add to Currently Reading">
+                </a>
+
+                <a href="{% url 'readingBuddy:show_book' book.slug %}">
+                    <img width="50px" src = "{% static 'images/tick.JPG' %}"
+                     alt="Add to Read books">
+                </a>
 </div>
 <br>
 <br>
