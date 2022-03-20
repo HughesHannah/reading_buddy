@@ -46,6 +46,7 @@ footer{
 
 .bookRight{
   padding-top: 5%;
+  padding-left: 5%;
 }
 
 .booksInBooklist{
@@ -135,3 +136,6 @@ footer{
   padding-left: 5%;
 }
 
+.searchBar{
+  margin-right:  5%;
+}
