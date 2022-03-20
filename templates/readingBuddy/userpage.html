@@ -24,7 +24,7 @@
             {% if comments %}
             <ul>
                 {% for comment in comments %}
-                    <li>{{ comment.content }}</li>
+                    <li>{{ comment.content }} -- “{{ comment.Book }}”</li>
                 {% endfor %}
             </ul>
             {% endif %}
