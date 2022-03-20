@@ -1,4 +1,4 @@
-~$python manage.py test readingBuddy
+~$ python manage.py test readingBuddy
 ~$ python manage.py makemigrations readingBuddy
 ~$ python manage.py migrate
 ~$ python populate_rango.py
