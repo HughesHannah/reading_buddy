@@ -51,14 +51,6 @@
           </ul>
         </li>
       </ul>
-      <!-- The Search Bar -->
-      <!--form class="navbar-form navbar-left" action="../readingBuddy/search_do/" role="form">
-        <div class="form-group">
-          <input class="form-control" type="search" name="search" id="search" placeholder="Search">
-        </div>
-        <button class="btn btn-default" type="submit" >Submit</button>
-      </form-->
-
       <ul class="nav navbar-nav navbar-right">
         {% if user.is_authenticated %}
         <li class="dropdown">
@@ -73,8 +65,8 @@
         <li><a href="{% url 'readingBuddy:login' %}">Sign In</a></li>
         {% endif %}
       </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
+    </div>
+  </div>
 </nav>
 
 <section>
@@ -89,7 +81,7 @@
             <div class="row">
             {% if user.is_authenticated %}
                 <div class="col-md-3">
-                    <a href="{% url 'readingBuddy:restricted' %}">User Page</a>
+                    <a href="{% url 'readingBuddy:userpage' %}">User Page</a>
                 </div>
                 <div class="col-md-3">
                     <a href="{% url 'readingBuddy:logout' %}">Logout</a>

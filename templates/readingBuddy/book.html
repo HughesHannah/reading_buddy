@@ -1,14 +1,8 @@
 {% extends 'readingBuddy/base.html' %}
 {% load static %}
-
-{% block title_block %}
-    Book Details Page
-{% endblock %}
-
-
+{% block title_block %}Book Details Page{% endblock %}
 {% block body_block %}
-
-<script type="text/javascript">
+    <script type="text/javascript">
     $(document).ready(function() {
 
         $("#reviewBlock").hide();
@@ -17,76 +11,93 @@
         $("#reviewBlock").toggle();
       });
     });
-</script>
-
-
-
-{% if book %}
-<div>
-    <!--book name/title-->
-    <div class="bookHeading"> {{ book.book_name }} </div> 
+    </script>
+    {% if book %}
+        <div>
+            <!--book name/title-->
+            <div class="bookHeading">{{ book.book_name }}</div>
+        </div>
+        <div class="row">
+            <div class=" img-responsive col-md-6 bookPicture">
+                <img src="{{ MEDIA_URL }}{{ book.slug }}.jpg" alt="Picture of book."/>
+            </div>
+            <div class="col-md-6 bookInfoBlock">
+                <!--book score-->
+                <div class="bookInfo">Score: {{ book.score }}</div>
+                <!--book author-->
+                <div class="bookInfo">Author: {{ book.author }}</div>
+                <!--book introduction-->
+                <div class="bookInfo">Introduction: {{ book.intro }}</div>
+                <!-- book likes & views -->
+                <div class="bookInfo">Likes: {{ book.likes }}</div>
+                <div class="bookInfo">Views: {{ book.views }}</div>
+                <br>
+                <div>
+                    Like book:
+                    <img href="#"
+                         src="{% static 'images/heart.JPG' %}"
+                         alt="Like button"
+                         width="50px">
+                </a>
+            </div>
+            <br>
+            <div>
+                Add book to one of your lists:
+                <img href="#"
+                     src="{% static 'images/wishlist.JPG' %}"
+                     alt="Add to wishlist"
+                     width="50px">
+            </a>
+            <img href="#"
+                 src="{% static 'images/current.JPG' %}"
+                 alt="Add to Currently Reading"
+                 width="50px">
+        </a>
+        <img href="#"
+             src="{% static 'images/tick.JPG' %}"
+             alt="Add to Read books"
+             width="50px">
+    </a>
 </div>
-
-<div class="row">
-    <div class=" img-responsive col-md-6 bookPicture">
-        <img src="{{ MEDIA_URL}}{{ book.slug }}.jpg" alt="Picture of book."/>
+<br>
+<br>
+<div class="button">
+    <div class="button d1 showHide">
+        <a href="#">Click here to show reviews ...</a>
     </div>
-        
-    <div class="col-md-6 bookInfoBlock">
-        <!--book score-->
-        <div class="bookInfo"> Score: {{ book.score }} </div>
-        <!--book author-->
-        <div class="bookInfo"> Author: {{ book.author }} </div>
-        <!--book introduction-->
-        <div class="bookInfo"> Introduction: {{ book.intro }} </div>
-
-        <!-- book likes & views -->
-        <div class="bookInfo"> Likes: {{ book.likes }} </div>
-        <div class="bookInfo"> Views: {{ book.views }} </div><br>
-
-        <div class="button">
-        <div class="button d1 showHide"><a href="#">Click here to show reviews ...</a></div>
-
-        <!-- book comment -->
-        <div id="reviewBlock">
+    <!-- book comment -->
+    <div id="reviewBlock">
         {% if comments %}
-            <p> Reviews: </p>
+            <p>
+                Reviews:
+            </p>
             <ul>
-            {% for comment in comments %}
-                <li> {{ comment.content }} </li>
-            {% endfor %}
+                {% for comment in comments %}<li>{{ comment.content }}</li>{% endfor %}
             </ul>
-        {% else %} 
-            <strong>No comments of this book currently.</strong> 
+        {% else %}
+            <strong>No comments of this book currently.</strong>
         {% endif %}
-
-
         {% if user.is_authenticated %}
             <!-- comment form-->
-            <form id="add_comment_form" method="post" action="{% url 'readingBuddy:add_comment' book.slug %}">
-                    {% csrf_token %}
-                    {% for hidden in form.hidden_fields %}
-                        {{ hidden }}
-                    {% endfor %}
-                    {% for field in form.visible_fields %}
-                        {{ field.errors }}
-                        {{ field.help_text }}
-                        {{ field }}
-                    {% endfor %}
+            <form id="add_comment_form"
+                  method="post"
+                  action="{% url 'readingBuddy:add_comment' book.slug %}">
+                {% csrf_token %}
+                {% for hidden in form.hidden_fields %}{{ hidden }}{% endfor %}
+                {% for field in form.visible_fields %}
+                    {{ field.errors }}
+                    {{ field.help_text }}
+                    {{ field }}
+                {% endfor %}
                 <input type="submit" name="submit" value="Click me to add a review" />
             </form>
         {% else %}
             <a href="{% url 'readingBuddy:login' %}">Sign in to add a review</a>
         {% endif %}
     </div>
-
-    </div>
 </div>
-
-
+</div>
 {% else %}
-    <strong>The specified book does not exist.</strong>
+<strong>The specified book does not exist.</strong>
 {% endif %}
-
-
 {% endblock %}

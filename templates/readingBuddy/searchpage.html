@@ -8,10 +8,6 @@
 
 {% block body_block %}
 
-{% if user.is_authenticated %}
-    Hello {{ user.username }}
-{% endif %}
-
 <div>
     <h1>Search Result:</h1>
     {% if books %}
@@ -23,5 +19,13 @@
     {% endif %}
 </div>
 
+<br>
+
+{% if user.is_authenticated %}
+    <div>
+        Cant find the book you want? Add the book
+        <a href="#">here.</a>
+    </div>
+{% endif %}
 
 {% endblock %}
