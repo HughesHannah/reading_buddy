@@ -10,6 +10,12 @@
       $(".d1").click(function() {
         $("#reviewBlock").toggle();
       });
+
+      
+        function getURL() {
+            window.location.href;
+        }
+        
     });
     </script>
     {% if book %}
@@ -32,6 +38,9 @@
                 <div class="bookInfo">Likes: {{ book.likes }}</div>
                 <div class="bookInfo">Views: {{ book.views }}</div>
                 <br>
+               
+                <a href="mailto:?to=&body=Hi, I saw this book, '{{ book.book_name }}' by {{ book.author }} and thought that you would like it!&subject=Check out this book!">Share</a>
+
                 <div>
                     Like book:
                     <img href="#"
@@ -54,7 +63,7 @@
                 </a>
 
                 <a href="#">
-                    <img width="50px" src = "{% static 'images/tick.JPG' %}"
+                    <img width="50px" src="{% static 'images/tick.JPG' %}"
                      alt="Add to Read books">
                 </a>
 </div>
