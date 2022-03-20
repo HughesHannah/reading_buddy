@@ -15,4 +15,5 @@ urlpatterns = [
     path('userpage/', views.userpage, name='userpage'),
     path('search_do/', views.search_do, name="search"),
     path('book/<slug:book_name_slug>/add_comment/', views.add_comment, name='add_comment'),
+    path('book/<slug:book_name_slug>/add_wishlist/', views.add_wishlist, name='add_wishlist'),
 ]
