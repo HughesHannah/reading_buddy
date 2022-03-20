@@ -1,3 +1,4 @@
+from pyexpat.errors import messages
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseRedirect 
 from django.urls import reverse
@@ -268,4 +269,23 @@ def search_do(request):
     context_dict['books'] = book_list
 
     return render(request, 'readingBuddy/searchpage.html', context=context_dict)
+
+
+############################ add_wishlist  ############################
+## [test result] 
+#   - successfully add book_name to reading list
+@login_required
+def add_wishlist(request):
+    current_user = request.user
+    book_name = request.GET.get('book_name')
+
+    reading_list = ReadingList.objects.get(user = current_user)
+
+    reading_list.book1 = book_name
+
+    reading_list.save()
+
+    messages.info(request, 'The book has added to your wishlist')
+
+    return render(request, 'readingBuddy/book.html')
 
