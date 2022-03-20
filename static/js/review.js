@@ -3,9 +3,7 @@
 
         $("#reviewBlock").hide();
 
-      $("showReviews").click(function() {
+      $(".d1").click(function() {
         $("#reviewBlock").toggle();
       });
     });
-
-

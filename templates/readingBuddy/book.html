@@ -2,22 +2,7 @@
 {% load static %}
 {% block title_block %}Book Details Page{% endblock %}
 {% block body_block %}
-    <script type="text/javascript">
-    $(document).ready(function() {
-
-        $("#reviewBlock").hide();
-
-      $(".d1").click(function() {
-        $("#reviewBlock").toggle();
-      });
-
-      
-        function getURL() {
-            window.location.href;
-        }
-        
-    });
-    </script>
+<script type="text/javascript" src="{% static 'js/review.js' %}"></script>
     {% if book %}
         <div>
             <!--book name/title-->
@@ -71,7 +56,7 @@
 <br>
 <div class="button">
     <div class="button d1 showHide">
-        <a href="#">Click here to show reviews ...</a>
+        <a>Click here to show reviews ...</a>
     </div>
     <!-- book comment -->
     <div id="reviewBlock">
