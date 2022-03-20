@@ -197,8 +197,7 @@ def user_logout(request):
 def userpage(request):
     categories = Category.objects.all()
     comments = Comment.objects.filter(user=request.user)
-    readlist_list = ReadingList.objects.filter(user=request.user)
-    # book_list = Book.objects.filter(user=request.user) # future function
+    readlist_list = ReadingList.objects.all()
 
     context_dict = {}
     context_dict['categories'] = categories
@@ -270,20 +269,64 @@ def search_do(request):
 
     return render(request, 'readingBuddy/searchpage.html', context=context_dict)
 
-
 ############################ add_wishlist  ############################
-## [test result] 
-#   - successfully add book_name to reading list
 @login_required
-def add_wishlist(request,book_name_slug):
+def add_wishlist(request, book_name_slug):
+    categories = Category.objects.all()
+    comments = Comment.objects.filter(user=request.user)
     book_name = Book.objects.get(slug=book_name_slug)
-    reading_list = ReadingList.objects.filter(user=request.user)
-    reading_list.book1 = book_name
+    readlist_list = ReadingList.objects.all()
+    wish_list = ReadingList.objects.all()
+    #wish_list.book1 = book_name
+    #wish_list.book2 = readlist_list.book2
 
-    #reading_list.save()
-    messages.info(request, 'The book has added to your wishlist')
-
-    #return render(request, 'readingBuddy/book.html')
-    return redirect(reverse('readingBuddy:show_book', kwargs={'book_name_slug': book_name_slug}))
+    context_dict = {}
+    context_dict['categories'] = categories
+    context_dict['comments'] = comments
+    context_dict['readlist_list'] = readlist_list
+    context_dict['wish_list'] = wish_list
     
 
+    return render(request, 'readingBuddy/userpage.html', context=context_dict)
+    #return redirect(reverse('readingBuddy:show_book', kwargs={'book_name_slug': book_name_slug}))
+
+
+
+"""
+############################ add_wishlist  ############################
+# need debugging -- Shuo
+@login_required
+ def add_wishlist(request):
+     current_user = request.user
+     book_name = request.GET.get('book_name')
+
+     reading_list = ReadingList.objects.get(user = current_user)
+
+     reading_list.book1 = book_name
+
+     reading_list.save()
+
+     messages.info(request, 'The book has added to your wishlist')
+
+     return render(request, 'readingBuddy/book.html')
+############################ add_wishlist  ############################
+# need debugging -- Yifan
+@login_required
+def add_wishlist(request, book_name_slug):
+    context_dict = {}
+    
+    categories = Category.objects.all()
+    book = Book.objects.get(slug=book_name_slug)
+
+    context_dict['categories'] = categories
+    context_dict['book'] = book
+
+    if request.POST:
+        obj = ReadingList(
+            user=request.user,
+            book1=book,
+        )
+        obj.save()
+        return redirect(reverse('readingBuddy:show_book', kwargs={'book_name_slug': book_name_slug}))
+    return render(request, 'readingBuddy/book.html', context=context_dict)
+"""
