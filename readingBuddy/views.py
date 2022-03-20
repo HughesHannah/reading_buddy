@@ -197,7 +197,7 @@ def user_logout(request):
 def userpage(request):
     categories = Category.objects.all()
     comments = Comment.objects.filter(user=request.user)
-    readlist_list = ReadingList.objects.all()
+    readlist_list = ReadingList.objects.filter(user=request.user)
     # book_list = Book.objects.filter(user=request.user) # future function
 
     context_dict = {}
@@ -276,20 +276,14 @@ def search_do(request):
 #   - successfully add book_name to reading list
 @login_required
 def add_wishlist(request,book_name_slug):
-    current_user = request.user
-    book = Book.objects.get(slug=book_name_slug)
-    #book_name = request.GET.get('book_name')
+    book_name = Book.objects.get(slug=book_name_slug)
+    reading_list = ReadingList.objects.filter(user=request.user)
+    reading_list.book1 = book_name
 
-    reading_list = ReadingList.objects.filter(user = current_user)
-
-    #reading_list.book1 = book
-    obj = ReadingList(
-        user = request.user,book1 = book,)
-    obj.save()
     #reading_list.save()
-
-    #messages.info(request, 'The book has added to your wishlist')
+    messages.info(request, 'The book has added to your wishlist')
 
     #return render(request, 'readingBuddy/book.html')
     return redirect(reverse('readingBuddy:show_book', kwargs={'book_name_slug': book_name_slug}))
+    
 

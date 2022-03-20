@@ -18,7 +18,10 @@
                         <ul>
                             {% for comment in comments %}<li>{{ comment.content }} -- “{{ comment.Book }}”</li>{% endfor %}
                         </ul>
+                    {% else %}
+                        <p> you have not reviewed any book! </p>
                     {% endif %}
+
                 </div>
                 {% if readlist_list %}
                     <h3>
