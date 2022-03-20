@@ -5,27 +5,27 @@
     <!--Navigation bar-->
     {% if user.is_authenticated %}
         <div class="row userpageContent">
-            <div>
-                <h2>Hello {{ user.username }} !</h2>
+            <div class= "col-md-4">
+                <h2>Hello {{ user.username }} !</h2><br>
+                <!--user picture-->
+                {% if request.user.userprofile.picture %}
+                <img src="{{ request.user.userprofile.picture.url }}" alt="" width="80%" align="center">
+    {% endif %}
             </div>
-            <div>
+            <div class="col-md-8">
                 <div>
-                    <!--user picture-->
-                    <!--user info/bio-->
+                    
                     <h3>My Reviews:</h3>
                     <!-- user Comment -->
                     {% if comments %}
                         <ul>
                             {% for comment in comments %}<li>{{ comment.content }} -- “{{ comment.Book }}”</li>{% endfor %}
                         </ul>
-                    {% else %}
-                        <p> you have not reviewed any book! </p>
                     {% endif %}
-
                 </div>
                 {% if readlist_list %}
                     <h3>
-                        <img src="{% static 'images/wishlist.JPG' book.slug %}"
+                        <img src="{% static 'images/wishlist.JPG' %}"
                              alt="Add to wishlist"
                              width="50px">
                         Wishlist:
@@ -42,9 +42,7 @@
                         Currently Reading:
                     </h3>
                     <!-- user currently reading -->
-                    {% for current_reading in readlist_list %}
-                        <li>{{ current_reading.book3 }}</li>
-                    {% endfor %}
+                    {% for reading in readlist_list %}<li>{{ reading.book3 }}</li>{% endfor %}
                     <h3>
                         <img src="{% static 'images/tick.JPG' %}"
                              alt="Add to read list"
@@ -52,9 +50,9 @@
                         Finished Reading:
                     </h3>
                     <!-- user finish reading list -->
-                    {% for finish_reading in readlist_list %}
-                        <li>{{ finish_reading.book4 }}</li>
-                        <li>{{ finish_reading.book5 }}</li>
+                    {% for finish in readlist_list %}
+                        <li>{{ finish.book4 }}</li>
+                        <li>{{ finish.book5 }}</li>
                     {% endfor %}
                 {% endif %}
             </div>
