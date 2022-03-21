@@ -1,0 +1,4 @@
+Django==2.1.5
+olefile @ file:///home/conda/feedstock_root/build_artifacts/olefile_1602866521163/work
+Pillow @ file:///D:/bld/pillow_1636559064986/work
+pytz @ file:///home/conda/feedstock_root/build_artifacts/pytz_1633452062248/work
